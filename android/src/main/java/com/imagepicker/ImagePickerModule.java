@@ -733,7 +733,8 @@ public class ImagePickerModule extends ReactContextBaseJavaModule
     }
 
     // type
-    String extension = MimeTypeMap.getFileExtensionFromUrl(path);
+    String handleSpacePath = path.replaceAll("　|\\s", "");
+    String extension = MimeTypeMap.getFileExtensionFromUrl(handleSpacePath);
     if (extension != null) {
       responseHelper.putString("type", MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension));
     }
